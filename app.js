@@ -1,4 +1,7 @@
 const app = Vue.createApp({
-  template: ` <h1>Hello word</h1>`,
+  data: {
+    title: "QRCode Generator",
+    text: "https://www.google.com.br",
+  },
 });
 app.mount("#app");
