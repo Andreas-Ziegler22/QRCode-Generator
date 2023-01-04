@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Andreas-Ziegler22/QRCode-Generator/issues"
   },
-  "homepage": "https://github.com/Andreas-Ziegler22/QRCode-Generator#readme"
+  "homepage": "https://github.com/Andreas-Ziegler22/QRCode-Generator#readme",
+  "dependencies": {
+    "qrious": "^4.0.2"
+  }
 }
