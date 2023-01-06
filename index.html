@@ -15,6 +15,7 @@
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   </head>
   <body>
+    <script src="/path/to/qrious.js"></script>
     <div id="app">
       <h1>{{title}}</h1>
       <div>
@@ -26,7 +27,7 @@
         />
       </div>
       <div v-if="text" class="output">
-        <img :src="newQRCode" alt="QRCode" />
+        <img :src="new QRCode" alt="" />
       </div>
     </div>
 
@@ -37,7 +38,10 @@
           return {
             title: "QRCode Generator using Vue and qrcode.js",
             text: "https://www.google.com",
-            qrcode: newQRCode({ size: 300 }),
+            qrcode: newQRCode({
+              size: 300,
+              value: "https://github.com/neocotic/qrious",
+            }),
           };
         },
         computed() {
