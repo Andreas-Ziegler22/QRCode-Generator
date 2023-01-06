@@ -6,9 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>QRCode Generator vue</title>
     <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div id="app">{{title}}</div>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/qrcode/1.5.1/qrcode.js"
       integrity="sha512-hAz8pxm1kva4chZWPXQhGehvvlIj1Loka653sQXoYHNj4sgSukoR3ZKyHEOT7kFGVW17wUqD9CbKeviIJ2XFKQ=="
@@ -16,12 +13,39 @@
       referrerpolicy="no-referrer"
     ></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{title}}</h1>
+      <div>
+        <input
+          type="text"
+          size="25"
+          placeholder="text to generate..."
+          v-model="text"
+        />
+      </div>
+      <div v-if="text" class="output">
+        <img :src="newQRCode" alt="QRCode" />
+      </div>
+    </div>
+
     <script>
       const { createApp } = Vue;
       createApp({
         data() {
           return {
             title: "QRCode Generator using Vue and qrcode.js",
+            text: "https://www.google.com",
+            qrcode: newQRCode({ size: 300 }),
+          };
+        },
+        computed() {
+          return {
+            newQRCode() {
+              this.qrcode.value = this.text;
+              return this.qrcode.toDataURL();
+            },
           };
         },
       }).mount("#app");
